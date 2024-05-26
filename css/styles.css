@@ -79,11 +79,11 @@
   --bs-highlight-bg: #fff3cd;
 }
 
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
@@ -11003,5 +11003,10 @@ section.resume-section .resume-section-content {
     padding-right: 3rem;
     padding-top: 5rem;
     padding-bottom: 5rem;
+    width: 75%;
   }
+  /* section.media-section {
+    width: 100%;
+
+  } */
 }
