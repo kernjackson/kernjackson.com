@@ -216,7 +216,7 @@ ol,
 ul,
 dl {
   margin-top: 0;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 ol ol,
@@ -10982,8 +10982,8 @@ section.resume-section {
   align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 3rem;
-  padding-bottom: 0rem;
+  padding-top:3rem;
+  padding-bottom: 1.5rem;
   max-width: 75rem;
 }
 section.resume-section .resume-section-content {
