@@ -44,6 +44,47 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <script>
+        function openMastodonProfile() {
+            // URL schemes for different apps
+            var urlSchemes = [
+                'Ivory:///user_profile/kern@iosdev.space', // Ivory by TapBots
+                'mastodon://iosdev.space/@kern', // Mastodon official app
+                'icecubes://iosdev.space/@kern', // IceCubes (opensource)
+                'mammoth://iosdev.space/@kern', // Mammoth (opensource)
+                // Add more URL schemes for other apps if needed
+            ];
+
+            // Fallback web URL
+            var fallbackWebUrl = 'https://iosdev.space/@kern';
+
+            // Function to try to open a URL scheme
+            function tryOpenUrl(url, timeout) {
+                return new Promise((resolve, reject) => {
+                    var iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = url;
+
+                    document.body.appendChild(iframe);
+
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                        resolve();
+                    }, timeout);
+                });
+            }
+
+            // Sequentially try each URL scheme
+            (async function() {
+                for (var i = 0; i < urlSchemes.length; i++) {
+                    await tryOpenUrl(urlSchemes[i], 1000); // 1 second timeout for each URL scheme
+                }
+
+                // Fallback to the web URL
+                window.location.href = fallbackWebUrl;
+            })();
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -106,7 +147,7 @@
                             <div class="social-icons">
                                 <span class="visually-hidden"><a class="social-icon" aria-hidden="true"
                                         href="https://iosdev.space/@kern" target="">Mastodon</a></span>
-                                <a class="social-icon" aria-hidden="true" href="https://iosdev.space/@kern"
+                                <a class="social-icon" aria-hidden="true" href="javascript:void(0);" onclick="openMastodonProfile();"
                                     target="_blank"><i class="fab fa-mastodon"></i></a>
                                 <span class="visually-hidden"><a href="https://x.com/@kern"
                                         target="_blank">X/Twitter</a></span>
@@ -124,6 +165,8 @@
 
                             </div>
                         </div>
+
+
 
                     </div>
                 </div>
